@@ -99,3 +99,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# dont commit the local config file
+configuration.json

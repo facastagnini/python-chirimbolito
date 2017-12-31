@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#/usr/bin/env bash -eux
 # Bootstrap a Raspberry Pi to run the Bitcoin address monitoring tool
 
 # update the APT references
@@ -11,6 +11,7 @@ sudo apt-get dist-upgrade -y
 sudo apt-get install build-essential python-dev python-smbus python-pip git i2c-tools
 sudo pip install --upgrade pip
 sudo pip install RPi.GPIO
+sudo pip install future ballpark pandas
 
 # Clone this repo if missing
 cd ~

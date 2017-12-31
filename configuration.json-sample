@@ -7,15 +7,15 @@
   "addresses": [
     {
       "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
-      "description": "The Genesis Address - the very first bitcoin address"
+      "description": "The Genesis address"
     },
     {
       "address": "1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v",
-      "description": "Wikileaks donations address"
+      "description": "Wikileaks donations"
     },
     {
       "address": "1Q1nhq1NbxPYAbw1BppwKbCqg58ZqMb9A8",
-      "description": "Protonmail donations address"
+      "description": "Protonmail donations"
     }
   ]
 }

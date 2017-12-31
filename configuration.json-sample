@@ -1,9 +1,21 @@
 {
   "rotation_delay": 5,
-  "rotation_delay_comment": "This is the delay in seconds for the information carousel"
-  "addresses": {
-    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa": "The Genesis Address - This is the very first bitcoin address",
-    "1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v": "Wikileaks bitcoin donations address",
-    "1Q1nhq1NbxPYAbw1BppwKbCqg58ZqMb9A8": "Protonmail bitcoin donations address"
-  }
+  "rotation_delay_comment": "This is the delay in seconds for the information carousel",
+  "refresh_delay": 5,
+  "refresh_delay_comment": "This is the delay in seconds to pull fresh data",
+  "currency": "USD",
+  "addresses": [
+    {
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "description": "The Genesis Address - the very first bitcoin address"
+    },
+    {
+      "address": "1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v",
+      "description": "Wikileaks donations address"
+    },
+    {
+      "address": "1Q1nhq1NbxPYAbw1BppwKbCqg58ZqMb9A8",
+      "description": "Protonmail donations address"
+    }
+  ]
 }

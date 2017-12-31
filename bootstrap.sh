@@ -11,7 +11,9 @@ sudo apt-get dist-upgrade -y
 sudo apt-get install build-essential python-dev python-smbus python-pip git i2c-tools
 sudo pip install --upgrade pip
 sudo pip install RPi.GPIO
-sudo pip install future ballpark pandas
+sudo pip install ballpark
+sudo pip install future   # remove after https://github.com/debrouwere/python-ballpark/pull/5
+sudo pip install pandas   # remove after https://github.com/debrouwere/python-ballpark/pull/6
 
 # Clone this repo if missing
 cd ~

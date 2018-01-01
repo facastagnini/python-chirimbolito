@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, signal, time, urllib2, socket, json, os
+import sys, signal, time, socket, json, os
 # from Adafruit_CharLCD import Adafruit_CharLCDPlate
 import Adafruit_CharLCD as LCD
 from PiBTCMonDisplay import PiBTCMonDisplay
@@ -8,7 +8,7 @@ from PiBTCMonDisplay import PiBTCMonDisplay
 def sigint_handler(signal, frame):
     '''Print a message and cleanup the display before exit'''
     lcd.clear()
-    lcd.message('Interrupted,\nShutting down.')
+    lcd.message('Interrupted,\nshutting down.')
     time.sleep(2)
     lcd.clear()
     try:
@@ -28,46 +28,7 @@ prevCol = -1
 prev = ""
 lastTime = time.time()
 
-'''
-#WIP - startup on boot
-def internetOn():
-  try:
-    response=urllib2.urlopen('http://google.com',timeout=3)
-    return True
-  except urllib2.URLError as err:
-    pass
-  return False
-'''
-
-#Check for network connection at startup
-t = time.time()
-while True:
-  lcd.clear()
-  lcd.message('checking network\nconnection (' + str(int(time.time() - t)) + 's)...')
-  time.sleep(1)
-  try:
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(('8.8.8.8', 0))
-
-    # set background color: set_color(red, green, blue)
-    lcd.set_color(1.0, 1.0, 1.0)
-    lcd.clear()
-    lcd.message('IP address:\n' + s.getsockname()[0])
-    s.shutdown(socket.SHUT_RDWR)
-    s.close()
-    time.sleep(1)
-    display.initInfo()  # Start info gathering/display
-    time.sleep(configuration["rotation_delay"])
-    break             # Success
-  except:
-    time.sleep(3)     # Pause a moment, keep trying
-'''
-  if internetOn() == True:
-    time.sleep(5)
-    break         # Success
-  else:
-    time.sleep(1) # Pause a moment, keep trying
-'''
+display.initInfo()
 
 buttons = ( (LCD.SELECT, 'Select', (1,1,1)),
             (LCD.LEFT,   'Left'  , (1,0,0)),

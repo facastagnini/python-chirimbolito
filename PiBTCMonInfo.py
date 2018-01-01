@@ -7,7 +7,7 @@ from datetime import date, timedelta
 from ballpark import business
 
 class PiBTCMonInfo(object):
-
+  
   screen = []
   walletBalance = []
   dollars = ['USD', 'AUD', 'CAD'] #currencies with displayable symbols

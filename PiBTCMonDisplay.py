@@ -5,13 +5,13 @@ from Adafruit_CharLCD import Adafruit_CharLCDPlate
 import time
 
 class PiBTCMonDisplay(object):
-  
+
   lcd = Adafruit_CharLCDPlate()
   info = None
   mode = 0
   offset = 0
   maxOffset = 0
-  screen = [] 
+  screen = []
   
   def __init__(self,configuration):
     self.configuration = configuration

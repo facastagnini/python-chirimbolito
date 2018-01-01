@@ -1,19 +1,16 @@
 #!/usr/bin/python
 
-import socket
-import time
 import urllib2
 import json
 import time
 from datetime import date, timedelta
 from ballpark import business
-import ballpark
 
 class PiBTCMonInfo(object):
   
-  screen    = []
+  screen = []
   walletBalance = []
-  dollars   = ['USD', 'AUD', 'CAD'] #currencies with displayable symbols
+  dollars = ['USD', 'AUD', 'CAD'] #currencies with displayable symbols
   lastCheck = 0   # initialize the last check time in the past to force the first price refresh
   priceYesterday = '-'
   priceLast = '-' #last price

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-import sys, time, urllib2, socket, json, os
-from Adafruit_CharLCD import Adafruit_CharLCDPlate
+import time, urllib2, socket, json, os
+# from Adafruit_CharLCD import Adafruit_CharLCDPlate
 import Adafruit_CharLCD as LCD
 from PiBTCMonDisplay import PiBTCMonDisplay
 

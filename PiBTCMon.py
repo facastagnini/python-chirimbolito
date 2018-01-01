@@ -1,9 +1,23 @@
 #!/usr/bin/python
 
-import time, urllib2, socket, json, os
+import sys, signal, time, urllib2, socket, json, os
 # from Adafruit_CharLCD import Adafruit_CharLCDPlate
 import Adafruit_CharLCD as LCD
 from PiBTCMonDisplay import PiBTCMonDisplay
+
+def sigint_handler(signal, frame):
+    '''Print a message and cleanup the display before exit'''
+    lcd.clear()
+    lcd.message('Interrupted,\nShutting down.')
+    time.sleep(2)
+    lcd.clear()
+    try:
+      sys.exit(0)
+    except SystemExit:
+      os._exit(0)
+
+# register the handler
+signal.signal(signal.SIGINT, sigint_handler)
 
 # read config file
 configuration = json.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'configuration.json')))

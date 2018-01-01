@@ -1,16 +1,12 @@
 #!/usr/bin/python
 
-import sys, time, urllib2, socket, json
+import sys, time, urllib2, socket, json, os
 from Adafruit_CharLCD import Adafruit_CharLCDPlate
 import Adafruit_CharLCD as LCD
 from PiBTCMonDisplay import PiBTCMonDisplay
 
 # read config file
-# configuration["addresses"][0]["address"]
-# configuration["addresses"][0]["description"]
-# configuration["rotation_delay"]
-# configuration["refresh_delay"]
-configuration = json.load(open('configuration.json'))
+configuration = json.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'configuration.json')))
 
 display = PiBTCMonDisplay(configuration)
 lcd = display.lcd

@@ -11,10 +11,6 @@ import ballpark
 
 class PiBTCMonInfo(object):
   
-  errRate   = 0.0
-  accepted  = 0.0
-  hw        = 0.0
-  diff1shares = 0.0
   screen    = []
   walletBalance = []
   dollars   = ['USD', 'AUD', 'CAD'] #currencies with displayable symbols

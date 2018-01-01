@@ -1,4 +1,7 @@
 # rpi-lcd-bitcoin-monitor
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/09b74b48abd44905892de63270b0e77d)](https://www.codacy.com/app/facastagnini_2/rpi-lcd-bitcoin-monitor?utm_source=github.com&utm_medium=referral&utm_content=facastagnini/rpi-lcd-bitcoin-monitor&utm_campaign=badger)
+
 A Bitcoin address monitoring tool built with a Raspberry Pi and a LCD display
 
 # You will need

@@ -12,7 +12,7 @@ class PiBTCMonDisplay(object):
   offset = 0
   maxOffset = 0
   screen = []
-  
+ 
   def __init__(self,configuration):
     self.configuration = configuration
     self.lcd.clear()

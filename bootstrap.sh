@@ -1,4 +1,4 @@
-#/usr/bin/env bash -eux
+#!/usr/bin/env bash -eux
 # Bootstrap a Raspberry Pi to run the Bitcoin address monitoring tool
 
 # update the APT references

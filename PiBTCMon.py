@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, signal, time, socket, json, os
+import sys, signal, time, json, os
 # from Adafruit_CharLCD import Adafruit_CharLCDPlate
 import Adafruit_CharLCD as LCD
 from PiBTCMonDisplay import PiBTCMonDisplay

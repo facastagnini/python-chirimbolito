@@ -19,13 +19,13 @@ class PiBTCMonDisplay(object):
 
     # start with the LCD backlight blue
     self.lcd.set_color(1.0,1.0,0.0)
-  
+
   #Show initial info (call after network connected)
   def initInfo(self):
     self.info = PiBTCMonInfo(self.configuration)
     # display the main screen after initializing
     self.dispScreen(self.info.screen[0])
-  
+
   #Send text to display
   def dispScreen(self, newScreen):
     self.screen = newScreen
@@ -48,25 +48,25 @@ class PiBTCMonDisplay(object):
     if self.offset >= self.maxOffset: return
     self.lcd.move_left()
     self.offset += 1
-  
+
   #Offset text to the left
   def scrollRight(self):
     if self.offset <= 0: return
     self.lcd.scrollDisplayRight()
     self.offset -= 1
-  
+
   #Display next info screen
   def modeUp(self):
     self.mode += 1
     if self.mode >= len(self.info.screen): self.mode = 0
     self.update()
-  
+
   #Display previous info screen
   def modeDown(self):
     self.mode -= 1
     if self.mode < 0: self.mode = len(self.info.screen)
     self.update()
-  
+
   #Update display
   def update(self):
     # refresh screens and data

@@ -19,7 +19,7 @@ class PiBTCMonInfo(object):
     self.configuration = configuration
     self.create_screens()
     self.refresh()
-    
+
   def create_screens(self):
     '''Create a screen for each bitcoin address to monitor'''
     self.screen.append(['no data','no data']) # show the price of 1 BTC
@@ -32,7 +32,7 @@ class PiBTCMonInfo(object):
   def reportError(self, s):
     for x in len(self.screen):
       self.screen[x] = [s, s]
-  
+
   def parse_summary(self):
     s1 = '1BTC = %s %s' % (business(self.priceLast), self.configuration["currency"])
     s2 = 'Monit: %s wallets' % (len(self.configuration["addresses"]))
@@ -50,7 +50,7 @@ class PiBTCMonInfo(object):
     except Exception as e:
       self.reportError(e)
       return None
-    
+
     # get yesterday's close price from the response
     if f:
       pricesData = f.read()
@@ -61,7 +61,7 @@ class PiBTCMonInfo(object):
         return None
       self.yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
       self.priceYesterday = prices_json['bpi'][self.yesterday]
-  
+
   def checkPrice(self):
     '''Get the current price of 1 BTC'''
     # fetch the json data from coindesk
@@ -72,7 +72,7 @@ class PiBTCMonInfo(object):
     except Exception as e:
       self.reportError(e)
       return None
- 
+
     # get current price from the response
     if f:
       pricesData = f.read()
@@ -82,7 +82,7 @@ class PiBTCMonInfo(object):
       except ValueError:
         return None
       self.priceLast = prices_json['bpi'][self.configuration["currency"]]['rate_float']
-  
+
   def checkWalletsBalance(self):
     '''Query the balance of the wallets'''
     for x in range(len(self.configuration["addresses"])):
@@ -94,7 +94,7 @@ class PiBTCMonInfo(object):
       except Exception as e:
         self.reportError(e)
         return None
- 
+
       # get wallet balance from the response
       if f:
         pricesData = f.read()
@@ -109,7 +109,7 @@ class PiBTCMonInfo(object):
 
   def refresh(self):
     '''Refresh data and screens'''
-   
+
     # fisrt refresh data if necessary
     now = time.time()
     since = now - self.lastCheck

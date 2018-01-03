@@ -17,14 +17,12 @@ class PiBTCMonDisplay(object):
     self.configuration = configuration
     self.lcd.clear()
 
-    # start with the LCD backlight blue
-    self.lcd.set_color(1.0,1.0,0.0)
+    # start with the LCD backlight: blue
+    self.backlightColor(0.0,0.0,1.0)
 
   #Show initial info (call after network connected)
   def initInfo(self):
     self.info = PiBTCMonInfo(self.configuration)
-    # display the main screen after initializing
-    self.dispScreen(self.info.screen[0])
 
   #Send text to display
   def dispScreen(self, newScreen):
@@ -67,9 +65,17 @@ class PiBTCMonDisplay(object):
     if self.mode < 0: self.mode = len(self.info.screen)
     self.update()
 
-  #Update display
   def update(self):
     # refresh screens and data
     self.info.refresh()
+
+    # set backlight color
+    if self.info.priceLast >= self.info.priceYesterday:
+      # green
+      self.lcd.set_color(0.0,1.0,0.0)
+    else:
+      # red
+      self.lcd.set_color(1.0,0.0,0.0)
+
     # display screen
     self.dispScreen(self.info.screen[self.mode])

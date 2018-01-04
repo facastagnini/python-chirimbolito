@@ -1,0 +1,5 @@
+RPi.GPIO
+Adafruit_CharLCD
+ballpark
+future   # remove after https://github.com/debrouwere/python-ballpark/pull/5 is merged
+pandas   # remove after https://github.com/debrouwere/python-ballpark/pull/6 is merged

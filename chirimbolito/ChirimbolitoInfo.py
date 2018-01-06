@@ -6,7 +6,7 @@ import time
 from datetime import date, timedelta
 from ballpark import business
 
-class PiBTCMonInfo(object):
+class ChirimbolitoInfo(object):
 
   screen = []
   walletBalance = []
@@ -117,7 +117,7 @@ class PiBTCMonInfo(object):
       self.checkPrice()
       self.checkPriceYesterday()
       self.checkWalletsBalance()
-      #print "we are in PiBTCMonInfo:refresh3"
+      #print "we are in ChirimbolitoInfo:refresh3"
       self.lastCheck = time.time()
 
       # Second refresh the screens

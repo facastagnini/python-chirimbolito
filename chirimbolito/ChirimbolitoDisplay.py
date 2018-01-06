@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
-from PiBTCMonInfo import PiBTCMonInfo
+from ChirimbolitoInfo import ChirimbolitoInfo
 from Adafruit_CharLCD import Adafruit_CharLCDPlate
 import time
 
-class PiBTCMonDisplay(object):
+class ChirimbolitoDisplay(object):
 
   lcd = Adafruit_CharLCDPlate()
   info = None
@@ -18,11 +18,11 @@ class PiBTCMonDisplay(object):
     self.lcd.clear()
 
     # start with the LCD backlight: blue
-    self.backlightColor(0.0,0.0,1.0)
+    self.lcd.set_color(0.0,0.0,1.0)
 
   #Show initial info (call after network connected)
   def initInfo(self):
-    self.info = PiBTCMonInfo(self.configuration)
+    self.info = ChirimbolitoInfo(self.configuration)
 
   #Send text to display
   def dispScreen(self, newScreen):

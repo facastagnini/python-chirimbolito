@@ -1,7 +1,10 @@
 Chirimbolito
 ============
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/09b74b48abd44905892de63270b0e77d)](https://www.codacy.com/app/facastagnini_2/chirimbolito?utm_source=github.com&utm_medium=referral&utm_content=facastagnini/chirimbolito&utm_campaign=badger)
+.. image:: https://api.codacy.com/project/badge/Grade/09b74b48abd44905892de63270b0e77d
+   :target: https://www.codacy.com/app/facastagnini_2/chirimbolito?utm_source=github.com&utm_medium=referral&utm_content=facastagnini/chirimbolito&utm_campaign=badger
+.. image:: https://badge.fury.io/py/chirimbolito.svg
+   :target: https://badge.fury.io/py/chirimbolito
 
 A Bitcoin address monitoring tool built with a Raspberry Pi and a LCD display
 
@@ -22,6 +25,7 @@ How to build it
 -   Boot the Raspberry Pi
 -   ssh into the Raspberry Pi and install the bitcoin address monitoring tool
 
+        WIP
         ssh pi@raspbian
         password: (the default password is 'raspberry')
         raspbian$ mkdir chirimbolito

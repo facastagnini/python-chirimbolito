@@ -15,7 +15,7 @@ class Chirimbolito():
       sys.exit(0)
     except SystemExit:
       os._exit(0)
-  
+
   def __init__(self):
     # register the handler
     signal.signal(signal.SIGINT, self.sigintHandler)
@@ -32,10 +32,10 @@ class Chirimbolito():
     # read config file
     for f in config_file_paths:
       filePath = os.path.join(os.path.dirname(os.path.realpath(f)), 'configuration.json')
-      if os.path.isfile(filePath): 
+      if os.path.isfile(filePath):
         print "%s file found" % filePath
         break
-      else: 
+      else:
         # print "Error: %s file not found" % filePath
         continue
 
@@ -47,7 +47,7 @@ class Chirimbolito():
         sys.exit(0)
       except SystemExit:
         os._exit(0)
-  
+
   def main(self):
     while True:
       now = time.time()

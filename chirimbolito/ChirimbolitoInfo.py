@@ -117,7 +117,6 @@ class ChirimbolitoInfo(object):
       self.checkPrice()
       self.checkPriceYesterday()
       self.checkWalletsBalance()
-      #print "we are in ChirimbolitoInfo:refresh3"
       self.lastCheck = time.time()
 
       # Second refresh the screens

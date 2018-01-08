@@ -19,6 +19,7 @@ class Chirimbolito():
   def __init__(self):
     # register the handler
     signal.signal(signal.SIGINT, self.sigintHandler)
+    signal.signal(signal.SIGTERM, self.sigintHandler)
 
     self.loadConfig()
     self.display = ChirimbolitoDisplay(self.configuration)

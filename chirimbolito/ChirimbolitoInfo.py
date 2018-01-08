@@ -12,8 +12,9 @@ class ChirimbolitoInfo(object):
   walletBalance = []
   dollars = ['USD', 'AUD', 'CAD'] #currencies with displayable symbols
   lastCheck = 0   # initialize the last check time in the past to force the first price refresh
-  priceYesterday = '-'
-  priceLast = '-' #last price
+  priceYesterday = '-' # yesterday's price
+  yesterday = '-' # Yesterday's date
+  priceLast = '-' # last price
 
   def __init__(self,configuration):
     self.configuration = configuration
@@ -39,28 +40,37 @@ class ChirimbolitoInfo(object):
     return [s1, s2]
 
   def checkPriceYesterday(self):
-    '''Get the price of 1 BTC from yesterday's close'''
-    # we should check this only once a day
+    '''
+    Get the price of 1 BTC from yesterday's close.
+    Source: CoinDesk Bitcoin Price Index
+    
+    "End-of-day high, low, and closing XBP is based on Coordinated Universal Time (UTC). 
+    As trades occur continuously, a day opens at 00:00:00 and closes at the end of 23:59:59, ie 00:00:00 of the next day."
+    '''
 
-    # fetch the json data from coindesk
-    try:
-      url = 'https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday&currency=***'.replace('***', self.configuration["currency"])
-      req = urllib2.Request(url, None, headers={ 'User-Agent': 'Mozilla/5.0' })
-      f = urllib2.urlopen(req)
-    except Exception as e:
-      self.reportError(e)
-      return None
-
-    # get yesterday's close price from the response
-    if f:
-      pricesData = f.read()
-      f.close()
+    # we should pull yesterday's price only once a day
+    today = date.today()
+    if (today - timedelta(1)) != self.yesterday: 
+      # fetch the json data from coindesk
       try:
-        prices_json = json.loads(pricesData)
-      except ValueError:
+        url = 'https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday&currency=***'.replace('***', self.configuration["currency"])
+        req = urllib2.Request(url, None, headers={ 'User-Agent': 'Mozilla/5.0' })
+        f = urllib2.urlopen(req)
+      except Exception as e:
+        self.reportError(e)
         return None
-      self.yesterday = (date.today() - timedelta(1)).strftime('%Y-%m-%d')
-      self.priceYesterday = prices_json['bpi'][self.yesterday]
+
+      # get yesterday's close price from the response
+      if f:
+        pricesData = f.read()
+        f.close()
+        try:
+          prices_json = json.loads(pricesData)
+          self.yesterday = today - timedelta(1)
+          self.priceYesterday = prices_json['bpi'][self.yesterday.strftime('%Y-%m-%d')]
+        except ValueError:
+          self.reportError(e)
+          return None
 
   def checkPrice(self):
     '''Get the current price of 1 BTC'''

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import sys, signal, time, json, os
 from ChirimbolitoDisplay import ChirimbolitoDisplay

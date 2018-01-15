@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import urllib2
 import json
@@ -43,14 +43,14 @@ class ChirimbolitoInfo(object):
     '''
     Get the price of 1 BTC from yesterday's close.
     Source: CoinDesk Bitcoin Price Index
-    
-    "End-of-day high, low, and closing XBP is based on Coordinated Universal Time (UTC). 
+
+    "End-of-day high, low, and closing XBP is based on Coordinated Universal Time (UTC).
     As trades occur continuously, a day opens at 00:00:00 and closes at the end of 23:59:59, ie 00:00:00 of the next day."
     '''
 
     # we should pull yesterday's price only once a day
     today = date.today()
-    if (today - timedelta(1)) != self.yesterday: 
+    if (today - timedelta(1)) != self.yesterday:
       # fetch the json data from coindesk
       try:
         url = 'https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday&currency=***'.replace('***', self.configuration["currency"])

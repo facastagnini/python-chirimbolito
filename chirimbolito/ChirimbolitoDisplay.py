@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 from ChirimbolitoInfo import ChirimbolitoInfo
 from Adafruit_CharLCD import Adafruit_CharLCDPlate

@@ -8,18 +8,9 @@ sudo apt-get update
 sudo apt-get dist-upgrade -y
 
 # install necessary tools
-sudo apt-get install build-essential python-dev python-smbus python-pip git i2c-tools
+sudo apt-get install build-essential python3 python-dev python-smbus python-pip i2c-tools
 sudo pip install --upgrade pip
-sudo pip install RPi.GPIO
-sudo pip install ballpark coverage
-sudo pip install future   # remove after https://github.com/debrouwere/python-ballpark/pull/5
-sudo pip install pandas   # remove after https://github.com/debrouwere/python-ballpark/pull/6
-
-# Clone this repo if missing
-cd ~
-test ! -d rpi-lcd-bitcoin-monitor && git clone https://github.com/facastagnini/rpi-lcd-bitcoin-monitor.git
-cd rpi-lcd-bitcoin-monitor
-git pull
+sudo pip install chirimbolito
 
 # place a sample config file 
 test ! -f configuration.json-sample && cp configuration.json-sample configuration.json

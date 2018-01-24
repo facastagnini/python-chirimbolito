@@ -34,19 +34,19 @@ How to build it
 
     pi@raspbian ~ $ sudo apt-get update && sudo apt-get install build-essential python3 python3-dev python3-smbus python3-pip i2c-tools
 
-    pi@raspbian ~ $ sudo pip install --upgrade pip
-
+    pi@raspbian ~ $ sudo pip3 install --upgrade pip
+    
     pi@raspbian ~ $ sudo /usr/sbin/usermod -a -G i2c pi
-
+    
     pi@raspbian ~ $ mkdir chirimbolito
-
+    
     pi@raspbian ~ $ virtualenv chirimbolito
-
+    
     pi@raspbian ~ $ cd chirimbolito
-
+    
     pi@raspbian ~/chirimbolito $ source bin/activate
-
-    (chirimbolito) pi@raspbian ~/chirimbolito $ pip install chirimbolito
+    
+    (chirimbolito) pi@raspbian ~/chirimbolito $ pip3 install chirimbolito
 
 - Edit the file `~/.config/chirimbolito.json` to configure the bitcoin addresses that you want to monitor.
 
@@ -55,3 +55,28 @@ How to build it
 CONTRIBUITING
 *************
 Contributions gladly accepted, just open a ticket or send a PR :)
+
+*********
+PACKAGING
+*********
+
+    pip install --user check-manifest
+
+    # check MANIFEST.in to make sure we are including everything we need
+    check-manifest
+
+    export VERSION='0.dev7'
+
+    # bump the $VERSION in setup.py
+
+    python3 setup.py sdist bdist_wheel
+    
+    gpg --detach-sign -a dist/chirimbolito-$VERSION.tar.gz
+    
+    gpg --detach-sign -a dist/chirimbolito-$VERSION-py3-none-any.whl
+    
+    python3 -m twine upload --repository pypi dist/*
+    
+    git tag -s $VERSION
+    
+    git push --tags

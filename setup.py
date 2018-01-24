@@ -22,7 +22,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='chirimbolito',
-    version='0.dev6', # Single digit based release NN
+    version='0.dev7', # Single digit based release NN
     description='A Bitcoin address monitoring tool built with a Raspberry Pi and a LCD display',
     long_description=long_description,
     url='https://github.com/facastagnini/python-chirimbolito',
@@ -49,6 +49,7 @@ setup(
     data_files=[
         (path.join(path.expanduser('~'), '.config'), ['chirimbolito.json'])
     ],
+    include_package_data=True,
 
     # remove future after https://github.com/debrouwere/python-ballpark/pull/5
     # remove pandas after https://github.com/debrouwere/python-ballpark/pull/6

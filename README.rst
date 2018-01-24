@@ -28,13 +28,30 @@ How to build it
 - Boot the Raspberry Pi
 - ssh into the Raspberry Pi and install the bitcoin address monitoring tool
 
-    WIP
     ssh pi@raspbian
-    password: (the default password is 'raspberry')
-    raspbian$ mkdir chirimbolito
-    raspbian$ virtualenv chirimbolito
-    raspbian$ cd chirimbolito
-    raspbian$ source bin/activate
-    raspbian$ pip install chirimbolito
 
-- Edit the file `configuration.json` to configure the bitcoin addresses that you want to monitor.
+    password: (the default password is 'raspberry')
+
+    pi@raspbian ~ $ sudo apt-get update && sudo apt-get install build-essential python3 python3-dev python3-smbus python3-pip i2c-tools
+
+    pi@raspbian ~ $ sudo pip install --upgrade pip
+
+    pi@raspbian ~ $ sudo /usr/sbin/usermod -a -G i2c pi
+
+    pi@raspbian ~ $ mkdir chirimbolito
+
+    pi@raspbian ~ $ virtualenv chirimbolito
+
+    pi@raspbian ~ $ cd chirimbolito
+
+    pi@raspbian ~/chirimbolito $ source bin/activate
+
+    (chirimbolito) pi@raspbian ~/chirimbolito $ pip install chirimbolito
+
+- Edit the file `~/.config/chirimbolito.json` to configure the bitcoin addresses that you want to monitor.
+
+
+*************
+CONTRIBUITING
+*************
+Contributions gladly accepted, just open a ticket or send a PR :)

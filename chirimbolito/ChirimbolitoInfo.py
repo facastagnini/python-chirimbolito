@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-import urllib2
-import json
+import requests
 import time
 from datetime import date, timedelta
 from ballpark import business
@@ -54,44 +53,27 @@ class ChirimbolitoInfo(object):
       # fetch the json data from coindesk
       try:
         url = 'https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday&currency=***'.replace('***', self.configuration["currency"])
-        req = urllib2.Request(url, None, headers={ 'User-Agent': 'Mozilla/5.0' })
-        f = urllib2.urlopen(req)
+        req = requests.get(url)
+        prices_json = req.json()
+        yesterday = today - timedelta(1)
+        self.priceYesterday = prices_json['bpi'][yesterday.strftime('%Y-%m-%d')]
+        # update only after a successful price update
+        self.yesterday = today - timedelta(1)
       except Exception as e:
         self.reportError(e)
         return None
-
-      # get yesterday's close price from the response
-      if f:
-        pricesData = f.read()
-        f.close()
-        try:
-          prices_json = json.loads(pricesData)
-          self.yesterday = today - timedelta(1)
-          self.priceYesterday = prices_json['bpi'][self.yesterday.strftime('%Y-%m-%d')]
-        except ValueError:
-          self.reportError(e)
-          return None
 
   def checkPrice(self):
     '''Get the current price of 1 BTC'''
     # fetch the json data from coindesk
     try:
       url = 'https://api.coindesk.com/v1/bpi/currentprice/***.json'.replace('***', self.configuration["currency"])
-      req = urllib2.Request(url, None, headers={ 'User-Agent': 'Mozilla/5.0' })
-      f = urllib2.urlopen(req)
+      req = requests.get(url)
+      prices_json = req.json()
+      self.priceLast = prices_json['bpi'][self.configuration["currency"]]['rate_float']
     except Exception as e:
       self.reportError(e)
       return None
-
-    # get current price from the response
-    if f:
-      pricesData = f.read()
-      f.close()
-      try:
-        prices_json = json.loads(pricesData)
-      except ValueError:
-        return None
-      self.priceLast = prices_json['bpi'][self.configuration["currency"]]['rate_float']
 
   def checkWalletsBalance(self):
     '''Query the balance of the wallets'''
@@ -99,23 +81,13 @@ class ChirimbolitoInfo(object):
       # query the internet
       try:
         url = 'https://blockchain.info/rawaddr/***'.replace('***', self.configuration["addresses"][x]['address'])
-        req = urllib2.Request(url, None, headers={ 'User-Agent': 'Mozilla/5.0' })
-        f = urllib2.urlopen(req)
+        req = requests.get(url)
+        prices_json = req.json()
+        # btc ballance in wallets is expressed in satoshis, this converts it to BTC
+        self.walletBalance[x] = prices_json['final_balance'] / 100000000.0
       except Exception as e:
         self.reportError(e)
         return None
-
-      # get wallet balance from the response
-      if f:
-        pricesData = f.read()
-        f.close()
-        try:
-          prices_json = json.loads(pricesData)
-        except ValueError:
-          return None
-
-        # btc ballance in wallets is expressed in satoshis, this converts it to BTC
-        self.walletBalance[x] = prices_json['final_balance'] / 100000000.0
 
   def refresh(self):
     '''Refresh data and screens'''

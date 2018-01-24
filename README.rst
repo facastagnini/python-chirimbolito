@@ -63,6 +63,7 @@ PACKAGING
     pip install --user check-manifest
 
     # check MANIFEST.in to make sure we are including everything we need
+
     check-manifest
 
     export VERSION='0.dev7'

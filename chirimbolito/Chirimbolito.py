@@ -29,21 +29,12 @@ class Chirimbolito(object):
     self.main()
 
   def loadConfig(self):
-    config_file_paths = ['.', '~', '/etc/default', '/etc']
-    # read config file
-    for f in config_file_paths:
-      filePath = os.path.join(os.path.dirname(os.path.realpath(f)), 'configuration.json')
-      if os.path.isfile(filePath):
-        print "%s file found" % filePath
-        break
-      else:
-        # print "Error: %s file not found" % filePath
-        continue
-
+    '''Try to read the config file'''
+    filePath = os.path.join(os.path.expanduser('~'), '.config/chirimbolito.json')
     try:
       self.configuration = json.load(open(filePath))
     except IOError:
-      print "Error: File %s does not appear to exist." % filePath
+      print "Error: %s file not found" % filePath
       try:
         sys.exit(0)
       except SystemExit:

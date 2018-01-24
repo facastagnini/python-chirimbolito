@@ -3,7 +3,7 @@
 import sys, signal, time, json, os
 from ChirimbolitoDisplay import ChirimbolitoDisplay
 
-class Chirimbolito():
+class Chirimbolito(object):
 
   def sigintHandler(self, signal, frame):
     '''Print a message and cleanup the display before exit'''

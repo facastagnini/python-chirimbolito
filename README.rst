@@ -37,7 +37,7 @@ How to build it
     pi@raspbian ~ $ sudo pip3 install --upgrade pip
     
     pi@raspbian ~ $ sudo /usr/sbin/usermod -a -G i2c pi
-    
+
     pi@raspbian ~ $ mkdir chirimbolito
     
     pi@raspbian ~ $ virtualenv chirimbolito
@@ -48,7 +48,11 @@ How to build it
     
     (chirimbolito) pi@raspbian ~/chirimbolito $ pip3 install chirimbolito
 
+    (chirimbolito) pi@raspbian ~ $ mkdir ~/.config && test -f ~/.config/chirimbolito.json || curl -sLo ~/.config/chirimbolito.json https://raw.githubusercontent.com/facastagnini/python-chirimbolito/master/chirimbolito.json
+ 
+
 - Edit the file `~/.config/chirimbolito.json` to configure the bitcoin addresses that you want to monitor.
+- Start the service (TODO)
 
 
 *************

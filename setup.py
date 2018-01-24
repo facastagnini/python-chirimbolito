@@ -17,9 +17,6 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
-# Arguments marked as "Required" below must be included for upload to PyPI.
-# Fields marked as "Optional" may be commented out.
-
 setup(
     name='chirimbolito',
     version='0.dev7', # Single digit based release NN
@@ -45,10 +42,6 @@ setup(
     keywords='raspberry pi rpi bitcoin lcd wallet monitoring',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
-    # install sample config file
-    data_files=[
-        (path.join(path.expanduser('~'), '.config'), ['chirimbolito.json'])
-    ],
     include_package_data=True,
 
     # remove future after https://github.com/debrouwere/python-ballpark/pull/5
@@ -60,4 +53,3 @@ setup(
         ],
     },
 )
-

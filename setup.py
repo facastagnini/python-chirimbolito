@@ -22,7 +22,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='chirimbolito',
-    version='0.dev7', # Single digit based release NN
+    version='3', # Single digit based release NN
     description='A Bitcoin address monitoring tool built with a Raspberry Pi and a LCD display',
     long_description=long_description,
     url='https://github.com/facastagnini/python-chirimbolito',

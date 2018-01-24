@@ -11,6 +11,7 @@ class Chirimbolito(object):
     self.lcd.message('Interrupted,\nshutting down.')
     time.sleep(2)
     self.lcd.clear()
+    self.lcd.set_backlight(0)
     try:
       sys.exit(0)
     except SystemExit:

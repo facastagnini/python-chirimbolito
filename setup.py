@@ -17,6 +17,9 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
 setup(
     name='chirimbolito',
     version='0.dev7', # Single digit based release NN
@@ -46,7 +49,7 @@ setup(
 
     # remove future after https://github.com/debrouwere/python-ballpark/pull/5
     # remove pandas after https://github.com/debrouwere/python-ballpark/pull/6
-    install_requires=['Adafruit_CharLCD', 'RPi.GPIO','requests','ballpark','future','pandas'],
+    install_requires=requirements,
     entry_points={
         'console_scripts': [
             'chirimbolito = chirimbolito.Chirimbolito:run',

@@ -30,7 +30,7 @@ class ChirimbolitoInfo(object):
       self.walletBalance.append(0)
 
   def reportError(self, s):
-    for x in len(self.screen):
+    for x in range(len(self.screen)):
       self.screen[x] = [s, s]
 
   def parse_summary(self):

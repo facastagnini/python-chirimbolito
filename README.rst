@@ -9,6 +9,9 @@ CHIRIMBOLITO
 
 A Bitcoin address monitoring tool built with a Raspberry Pi and a LCD display
 
+.. image:: https://j.gifs.com/32EWxp.gif
+   :target: https://youtu.be/tuYTrJn6IcY
+
 ********
 Features
 ********

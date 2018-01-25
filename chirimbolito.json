@@ -1,6 +1,6 @@
 {
   "rotation_delay": 5,
-  "rotation_delay_comment": "This is the delay in seconds for the information carousel",
+  "rotation_delay_comment": "This is the delay in seconds for the information carrousel",
   "refresh_delay": 5,
   "refresh_delay_comment": "This is the delay in seconds to pull fresh data",
   "currency": "USD",

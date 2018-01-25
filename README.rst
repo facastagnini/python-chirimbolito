@@ -1,5 +1,5 @@
 ============
-Chirimbolito
+CHIRIMBOLITO
 ============
 
 .. image:: https://api.codacy.com/project/badge/Grade/09b74b48abd44905892de63270b0e77d
@@ -8,6 +8,16 @@ Chirimbolito
    :target: https://badge.fury.io/py/chirimbolito
 
 A Bitcoin address monitoring tool built with a Raspberry Pi and a LCD display
+
+********
+Features
+********
+
+- It pulls the balance of the bitcoin addresses you want to monitor
+- It displays the BTC and FIAT of your choise for each address
+- It supports multiple addresses
+- It is easy to configure trough a json file
+- The background color changes according to the FIAT price fluctuations. It compares the price of the present vs the price from yesterday's closing
 
 *************
 You will need

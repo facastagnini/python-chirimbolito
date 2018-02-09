@@ -65,7 +65,9 @@ How to build it
  
 
 - Edit the file `~/.config/chirimbolito.json` to configure the bitcoin addresses that you want to monitor.
-- Start the service (TODO)
+- Start the service
+
+    pi@raspbian ~/chirimbolito $ chirimbolito
 
 
 *************
